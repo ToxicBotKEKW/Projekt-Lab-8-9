@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projekt Lab 8-9", "Projekt Lab 8-9\Projekt Lab 8-9.csproj", "{DAA00D06-1D06-4C9F-B124-B54CFEEAE31A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplikacja Okienkowa", "Aplikacja Okienkowa\Aplikacja Okienkowa.csproj", "{3887AB1D-8493-459A-8C86-5901F4D437FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAA00D06-1D06-4C9F-B124-B54CFEEAE31A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA00D06-1D06-4C9F-B124-B54CFEEAE31A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA00D06-1D06-4C9F-B124-B54CFEEAE31A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA00D06-1D06-4C9F-B124-B54CFEEAE31A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3887AB1D-8493-459A-8C86-5901F4D437FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3887AB1D-8493-459A-8C86-5901F4D437FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3887AB1D-8493-459A-8C86-5901F4D437FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3887AB1D-8493-459A-8C86-5901F4D437FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C10F7B0-CFC4-4F7B-A0F7-5C5C0BB79E50}
+	EndGlobalSection
+EndGlobal
