@@ -55,7 +55,7 @@ namespace Projekt_Lab_8_9
 
             if (pickaxe.Multiplier.TryGetValue(ResourceType, out int multiplier))
             {
-                value = value * (1 + multiplier);
+                value = value * (1 + (multiplier * 0.01));
             }
 
             return value;

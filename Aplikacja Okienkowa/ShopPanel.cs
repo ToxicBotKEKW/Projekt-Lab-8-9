@@ -107,7 +107,7 @@ namespace Aplikacja_Okienkowa
 
                 Label multiplierIronTextLabel = new Label
                 {
-                    Text = $"- Żelazo: {pickaxe.Multiplier.GetValueOrDefault(ResourceType.Iron, 0)}",
+                    Text = $"- Żelazo: {pickaxe.Multiplier.GetValueOrDefault(ResourceType.Iron, 0)} %",
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     ForeColor = Color.FromArgb(33, 37, 41),
                     Dock = DockStyle.Top,
@@ -117,7 +117,7 @@ namespace Aplikacja_Okienkowa
 
                 Label multiplierGoldTextLabel = new Label
                 {
-                    Text = $"- Złoto: {pickaxe.Multiplier.GetValueOrDefault(ResourceType.Gold, 0)}",
+                    Text = $"- Złoto: {pickaxe.Multiplier.GetValueOrDefault(ResourceType.Gold, 0)} %",
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     ForeColor = Color.FromArgb(33, 37, 41),
                     Dock = DockStyle.Top,
@@ -127,7 +127,7 @@ namespace Aplikacja_Okienkowa
 
                 Label multiplierDiamondTextLabel = new Label
                 {
-                    Text = $"- Diamenty: {pickaxe.Multiplier.GetValueOrDefault(ResourceType.Diamond, 0)}",
+                    Text = $"- Diamenty: {pickaxe.Multiplier.GetValueOrDefault(ResourceType.Diamond, 0)} %",
                     Font = new Font("Segoe UI", 10, FontStyle.Bold),
                     ForeColor = Color.FromArgb(33, 37, 41),
                     Dock = DockStyle.Top,
