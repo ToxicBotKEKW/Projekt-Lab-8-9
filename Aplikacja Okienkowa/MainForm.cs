@@ -30,6 +30,8 @@ namespace Aplikacja_Okienkowa
 
         public MainForm()
         {
+            this.Text = "Kopalnia";
+
             mineGame = MineGame.GetInstance();
 
             string projectRoot1 = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
