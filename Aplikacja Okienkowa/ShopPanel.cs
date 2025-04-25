@@ -10,6 +10,7 @@ namespace Aplikacja_Okienkowa
     public partial class ShopPanel : UserControl
     {
         private MineGame mineGame;
+        private FlowLayoutPanel pickaxeShopListPanel;
 
         public ShopPanel()
         {
@@ -35,6 +36,66 @@ namespace Aplikacja_Okienkowa
                 AutoSize = true
             };
 
+            FlowLayoutPanel pickaxeShopSearchPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = true,
+                Padding = new Padding(10)
+            };
+
+            TextBox pickaxeShopSearchTextBox = new TextBox
+            {
+                PlaceholderText = "Nazwa kilofa",
+                Width = 150,
+                Height = 35,
+                Font = new Font("Segoe UI", 10, FontStyle.Regular),
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = Color.White,
+                ForeColor = Color.Black,
+                Margin = new Padding(5),
+            };
+
+            Button pickaxeShopSearchButton = new Button
+            {
+                Width = 120,
+                Height = 25,
+                Text = "Wyszukaj",
+                Font = new Font("Segoe UI", 10, FontStyle.Bold),
+                BackColor = Color.FromArgb(25, 135, 84), 
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand,
+                Margin = new Padding(5)
+            };
+
+            pickaxeShopSearchButton.FlatAppearance.BorderSize = 0;
+            pickaxeShopSearchButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 100, 60);
+
+
+            pickaxeShopSearchButton.Click += (s, v) => {
+                string name = pickaxeShopSearchTextBox.Text;
+                shopPanel.Controls.Remove(pickaxeShopListPanel);
+                pickaxeShopListPanel = InitPickaxeListPanel(name);
+                shopPanel.Controls.Add(pickaxeShopListPanel);
+                shopPanel.Controls.SetChildIndex(pickaxeShopListPanel, 0);
+            };
+
+            pickaxeShopSearchPanel.Controls.Add(pickaxeShopSearchTextBox);
+            pickaxeShopSearchPanel.Controls.Add(pickaxeShopSearchButton);
+
+            pickaxeShopListPanel = InitPickaxeListPanel(null);
+
+            shopPanel.Controls.Add(pickaxeShopListPanel);
+            shopPanel.Controls.Add(pickaxeShopSearchPanel);
+            shopPanel.Controls.Add(pickaxeShopLabel);
+
+            this.Controls.Add(shopPanel);
+        }
+
+        private FlowLayoutPanel InitPickaxeListPanel(String name)
+        {
             FlowLayoutPanel pickaxeShopPanel = new FlowLayoutPanel
             {
                 Dock = DockStyle.Top,
@@ -44,7 +105,7 @@ namespace Aplikacja_Okienkowa
                 Padding = new Padding(10)
             };
 
-            foreach (var item in mineGame.GetPickaxesYouCanBuy())
+            foreach (var item in mineGame.GetPickaxesYouCanBuy(name))
             {
                 Pickaxe pickaxe = item.Value.Item1;
 
@@ -229,11 +290,7 @@ namespace Aplikacja_Okienkowa
                 pickaxeShopPanel.Controls.Add(pickaxePanel);
             }
 
-
-            shopPanel.Controls.Add(pickaxeShopPanel);
-            shopPanel.Controls.Add(pickaxeShopLabel);
-
-            this.Controls.Add(shopPanel);
+            return pickaxeShopPanel;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Projekt_Lab_8_9
         public Dictionary<int, (Pickaxe, Dictionary<ResourceType, double>)> FindPickaxeByName(string name)
         {
             return PickaxeList
-                .Where(x => x.Value.pickaxe.Name.Equals(name))
+                .Where(x => x.Value.pickaxe.Name.Contains(name))
                 .ToDictionary(x => x.Key, x => x.Value);
         }
 

@@ -90,9 +90,16 @@ namespace Projekt_Lab_8_9
             return _instance;
         }
 
-        public Dictionary<int, (Pickaxe, Dictionary<ResourceType, double>)> GetPickaxesYouCanBuy()
+        public Dictionary<int, (Pickaxe, Dictionary<ResourceType, double>)> GetPickaxesYouCanBuy(String name)
         {
+            if(name == null)
+            {
             return PickaxeShop.PickaxeList
+                .Where(x => !Equipment.PickaxeList.Contains(x.Value.Item1))
+                .ToDictionary(x => x.Key, x => x.Value);
+            }
+
+            return PickaxeShop.FindPickaxeByName(name)
                 .Where(x => !Equipment.PickaxeList.Contains(x.Value.Item1))
                 .ToDictionary(x => x.Key, x => x.Value);
         }
