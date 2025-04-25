@@ -1,17 +1,17 @@
 {
-  "Iron": 534.5,
-  "Gold": 1.9000000000000412,
-  "Diamond": 0.7000000000000001,
+  "Iron": 3277.8199999999997,
+  "Gold": 29.35000000000005,
+  "Diamond": 2.399999999999999,
   "UsedPickaxe": {
-    "Id": 0,
-    "Name": "Kilof - admin",
-    "ImageName": "pickaxe-admin.png",
+    "Id": 3,
+    "Name": "Kilof - 2",
+    "ImageName": "pickaxe-2.png",
     "Multiplier": {
-      "Iron": 1000,
-      "Gold": 1000,
-      "Diamond": 1000
+      "Iron": 2,
+      "Gold": 1,
+      "Diamond": 0
     },
-    "RequirmentLevel": 0
+    "RequirmentLevel": 2
   },
   "IronMine": {
     "ResourceType": 0,
@@ -123,6 +123,28 @@
           "Diamond": 1000
         },
         "RequirmentLevel": 0
+      },
+      {
+        "Id": 2,
+        "Name": "Kilof - 1",
+        "ImageName": "pickaxe-1.png",
+        "Multiplier": {
+          "Iron": 2,
+          "Gold": 1,
+          "Diamond": 0
+        },
+        "RequirmentLevel": 2
+      },
+      {
+        "Id": 3,
+        "Name": "Kilof - 2",
+        "ImageName": "pickaxe-2.png",
+        "Multiplier": {
+          "Iron": 2,
+          "Gold": 1,
+          "Diamond": 0
+        },
+        "RequirmentLevel": 2
       }
     ]
   },

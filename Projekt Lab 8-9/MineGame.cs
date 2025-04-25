@@ -81,17 +81,17 @@ namespace Projekt_Lab_8_9
             return _instance;
         }
 
-        public Dictionary<int, (Pickaxe, Dictionary<ResourceType, double>)> GetPickaxesYouCanBuy(String name)
+        public Dictionary<int, (Pickaxe, Dictionary<ResourceType, double>)> GetPickaxesYouCanBuy(string name)
         {
             if (name == null)
             {
                 return PickaxeShop.PickaxeList
-                    .Where(x => !Equipment.PickaxeList.Contains(x.Value.Item1))
+                    .Where(x => !Equipment.PickaxeList.Any(p => p.Id == x.Value.Item1.Id))
                     .ToDictionary(x => x.Key, x => x.Value);
             }
 
             return PickaxeShop.FindPickaxeByName(name)
-                .Where(x => !Equipment.PickaxeList.Contains(x.Value.Item1))
+                .Where(x => !Equipment.PickaxeList.Any(p => p.Id == x.Value.Item1.Id))
                 .ToDictionary(x => x.Key, x => x.Value);
         }
 
