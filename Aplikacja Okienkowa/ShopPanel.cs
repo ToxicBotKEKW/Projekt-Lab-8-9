@@ -46,7 +46,7 @@ namespace Aplikacja_Okienkowa
 
             foreach (var item in mineGame.GetPickaxesYouCanBuy())
             {
-                Pickaxe pickaxe = item.Key;
+                Pickaxe pickaxe = item.Value.Item1;
 
                 Panel pickaxePanel = new Panel
                 {
@@ -135,7 +135,7 @@ namespace Aplikacja_Okienkowa
                     TextAlign = ContentAlignment.MiddleCenter
                 };
 
-                Dictionary<ResourceType, double> cost = item.Value;
+                Dictionary<ResourceType, double> cost = item.Value.Item2;
 
 
                 Label costTextLabel = new Label

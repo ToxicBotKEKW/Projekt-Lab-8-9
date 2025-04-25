@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 using System.IO;
 using System.ComponentModel;
 using static System.Net.Mime.MediaTypeNames;
+using Newtonsoft.Json;
 
 
 namespace Projekt_Lab_8_9
@@ -21,7 +22,7 @@ namespace Projekt_Lab_8_9
         public double Iron
         {
             get => _iron;
-            private set
+            set
             {
                 if (_iron != value)
                 {
@@ -35,7 +36,7 @@ namespace Projekt_Lab_8_9
         public double Gold
         {
             get => _gold;
-            private set
+            set
             {
                 if (_gold != value)
                 {
@@ -49,7 +50,7 @@ namespace Projekt_Lab_8_9
         public double Diamond
         {
             get => _diamond;
-            private set
+            set
             {
                 if (_diamond != value)
                 {
@@ -58,7 +59,6 @@ namespace Projekt_Lab_8_9
                 }
             }
         }
-
 
         public Pickaxe UsedPickaxe { get; private set; }
         public IronMine IronMine { get; private set; }
@@ -69,195 +69,16 @@ namespace Projekt_Lab_8_9
 
         private MineGame()
         {
-            Iron = 0;
-            Gold = 0;
-            Diamond = 0;
-
+            Iron = default;
+            Gold = default;
+            Diamond = default;
+            UsedPickaxe = new Pickaxe();
             IronMine = IronMine.GetInstance();
             GoldMine = GoldMine.GetInstance();
             DiamondMine = DiamondMine.GetInstance();
             Equipment = Equipment.GetInstance();
             PickaxeShop = PickaxeShop.GetInstance();
-
-            InitializeGameData();
         }
-
-        private void InitializeGameData()
-        {
-            var defaultPickaxe = new Pickaxe
-            {
-                Id = 1,
-                Name = "Podstawowy kilof",
-                ImageName = "pickaxe-0.png",
-                Multiplier = new Dictionary<ResourceType, int>
-                {
-                    { ResourceType.Iron, 0 },
-                    { ResourceType.Gold, 0 },
-                    { ResourceType.Diamond, 0 }
-                },
-                RequirmentLevel = 1
-            };
-
-            var pickaxe1 = new Pickaxe
-            {
-                Id = 2,
-                Name = "Kilof - 1",
-                ImageName = "pickaxe-1.png",
-                Multiplier = new Dictionary<ResourceType, int>
-                {
-                    { ResourceType.Iron, 2 },
-                    { ResourceType.Gold, 1 },
-                    { ResourceType.Diamond, 0 }
-                },
-                RequirmentLevel = 2
-            };
-
-            var pickaxe2 = new Pickaxe
-            {
-                Id = 3,
-                Name = "Kilof - 2",
-                ImageName = "pickaxe-2.png",
-                Multiplier = new Dictionary<ResourceType, int>
-                {
-                    { ResourceType.Iron, 2 },
-                    { ResourceType.Gold, 1 },
-                    { ResourceType.Diamond, 0 }
-                },
-                RequirmentLevel = 2
-            };
-
-            var pickaxe3 = new Pickaxe
-            {
-                Id = 4,
-                Name = "Kilof - 3",
-                ImageName = "pickaxe-3.png",
-                Multiplier = new Dictionary<ResourceType, int>
-                {
-                    { ResourceType.Iron, 2 },
-                    { ResourceType.Gold, 1 },
-                    { ResourceType.Diamond, 0 }
-                },
-                RequirmentLevel = 2
-            };
-
-            var pickaxe4 = new Pickaxe
-            {
-                Id = 5,
-                Name = "Kilof - 4",
-                ImageName = "pickaxe-4.png",
-                Multiplier = new Dictionary<ResourceType, int>
-                {
-                    { ResourceType.Iron, 2 },
-                    { ResourceType.Gold, 1 },
-                    { ResourceType.Diamond, 0 }
-                },
-                RequirmentLevel = 2
-            };
-
-            var adminPickaxe = new Pickaxe
-            {
-                Id = 0,
-                Name = "Kilof - admin",
-                ImageName = "pickaxe-admin.png",
-                Multiplier = new Dictionary<ResourceType, int>
-                {
-                    { ResourceType.Iron, 1000 },
-                    { ResourceType.Gold, 1000 },
-                    { ResourceType.Diamond, 1000 }
-                },
-                RequirmentLevel = 0
-            };
-
-            UsedPickaxe = defaultPickaxe;
-            Equipment.AddPickaxe(defaultPickaxe);
-            Equipment.AddPickaxe(adminPickaxe);
-
-            PickaxeShop.AddPickaxe(
-                pickaxe1,
-                new Dictionary<ResourceType, double>
-                {
-                    { ResourceType.Iron, 20 },
-                    { ResourceType.Gold, 1 },
-                    { ResourceType.Diamond, 0.5 }
-                }
-            );
-
-            PickaxeShop.AddPickaxe(
-                pickaxe2,
-                new Dictionary<ResourceType, double>
-                {
-                    { ResourceType.Iron, 40 },
-                    { ResourceType.Gold, 1 },
-                    { ResourceType.Diamond, 0.5 }
-                }
-            );
-
-            PickaxeShop.AddPickaxe(
-                pickaxe3,
-                new Dictionary<ResourceType, double>
-                {
-                    { ResourceType.Iron, 10 },
-                    { ResourceType.Gold, 3 },
-                    { ResourceType.Diamond, 0.5 }
-                }
-            );
-
-            PickaxeShop.AddPickaxe(
-                pickaxe4,
-                new Dictionary<ResourceType, double>
-                {
-                    { ResourceType.Iron, 50 },
-                    { ResourceType.Gold, 6 },
-                    { ResourceType.Diamond, 0.5 }
-                }
-            );
-
-
-            IronMine.LevelRequirments.Add(2, new Dictionary<ResourceType, double> { { ResourceType.Iron, 100 } });
-            IronMine.LevelRequirments.Add(3, new Dictionary<ResourceType, double> { { ResourceType.Iron, 300 } });
-            IronMine.LevelRequirments.Add(4, new Dictionary<ResourceType, double> { { ResourceType.Iron, 700 }, { ResourceType.Gold, 50 } });
-
-            IronMine.PointForClick.Add(1, 1);
-            IronMine.PointForClick.Add(2, 2);
-            IronMine.PointForClick.Add(3, 3.5);
-            IronMine.PointForClick.Add(4, 6);
-
-            IronMine.PointsPerInterval.Add(1, 10);
-            IronMine.PointsPerInterval.Add(2, 25);
-            IronMine.PointsPerInterval.Add(3, 50);
-            IronMine.PointsPerInterval.Add(4, 80);
-
-
-            GoldMine.LevelRequirments.Add(2, new Dictionary<ResourceType, double> { { ResourceType.Gold, 100 } });
-            GoldMine.LevelRequirments.Add(3, new Dictionary<ResourceType, double> { { ResourceType.Gold, 300 } });
-            GoldMine.LevelRequirments.Add(4, new Dictionary<ResourceType, double> { { ResourceType.Gold, 700 }, { ResourceType.Iron, 200 } });
-
-            GoldMine.PointForClick.Add(1, 0.1);
-            GoldMine.PointForClick.Add(2, 0.25);
-            GoldMine.PointForClick.Add(3, 0.5);
-            GoldMine.PointForClick.Add(4, 1);
-
-            GoldMine.PointsPerInterval.Add(1, 0.25);
-            GoldMine.PointsPerInterval.Add(2, 0.6);
-            GoldMine.PointsPerInterval.Add(3, 1.5);
-            GoldMine.PointsPerInterval.Add(4, 2.5);
-
-
-            DiamondMine.LevelRequirments.Add(2, new Dictionary<ResourceType, double> { { ResourceType.Diamond, 100 } });
-            DiamondMine.LevelRequirments.Add(3, new Dictionary<ResourceType, double> { { ResourceType.Diamond, 250 } });
-            DiamondMine.LevelRequirments.Add(4, new Dictionary<ResourceType, double> { { ResourceType.Diamond, 600 }, { ResourceType.Gold, 300 } });
-
-            DiamondMine.PointForClick.Add(1, 0.01);
-            DiamondMine.PointForClick.Add(2, 0.03);
-            DiamondMine.PointForClick.Add(3, 0.08);
-            DiamondMine.PointForClick.Add(4, 0.13);
-
-            DiamondMine.PointsPerInterval.Add(1, 0.05);
-            DiamondMine.PointsPerInterval.Add(2, 0.12);
-            DiamondMine.PointsPerInterval.Add(3, 0.3);
-            DiamondMine.PointsPerInterval.Add(4, 0.55);
-        }
-
 
         public static MineGame GetInstance()
         {
@@ -269,31 +90,23 @@ namespace Projekt_Lab_8_9
             return _instance;
         }
 
-        public Dictionary<Pickaxe, Dictionary<ResourceType, double>> GetPickaxesYouCanBuy()
+        public Dictionary<int, (Pickaxe, Dictionary<ResourceType, double>)> GetPickaxesYouCanBuy()
         {
             return PickaxeShop.PickaxeList
-                .Where(x => !Equipment.PickaxeList.Contains(x.Key))
+                .Where(x => !Equipment.PickaxeList.Contains(x.Value.Item1))
                 .ToDictionary(x => x.Key, x => x.Value);
         }
 
         public void BuyPickaxe(int idPickaxe)
         {
-            Pickaxe pickaxe = PickaxeShop.PickaxeList.Keys.FirstOrDefault(x => x.Id == idPickaxe);
-
-            if (pickaxe == null)
+            if (!PickaxeShop.PickaxeList.ContainsKey(idPickaxe))
             {
                 return;
             }
 
-            if (Equipment.PickaxeList.Any(x => x.Id == pickaxe.Id))
-            {
-                return;
-            }
-
-            if (!PickaxeShop.PickaxeList.TryGetValue(pickaxe, out Dictionary<ResourceType, double> cost))
-            {
-                return;
-            }
+            var pickaxeData = PickaxeShop.PickaxeList[idPickaxe];
+            Pickaxe pickaxe = pickaxeData.Item1;
+            Dictionary<ResourceType, double> cost = pickaxeData.Item2;
 
             double ironCost = cost.GetValueOrDefault(ResourceType.Iron, 0);
             double goldCost = cost.GetValueOrDefault(ResourceType.Gold, 0);
@@ -311,16 +124,17 @@ namespace Projekt_Lab_8_9
             Equipment.AddPickaxe(pickaxe);
         }
 
-        public void EquipPickaxe(int idPickaxe) {
+        public void EquipPickaxe(int idPickaxe)
+        {
             Pickaxe pickaxe = Equipment.PickaxeList.Find(x => x.Id == idPickaxe);
 
             if (pickaxe == null)
             {
                 return;
             }
+
             UsedPickaxe = pickaxe;
         }
-
         public void UpgradeMine(Mine mine)
         {
             Dictionary<ResourceType, double> cost = mine.RequirmentsForNextLevel();
@@ -395,6 +209,36 @@ namespace Projekt_Lab_8_9
                 }
 
             return $"+ {value}";
+        }
+
+        public String SaveDataToJson()
+        {
+            return JsonConvert.SerializeObject(_instance, Formatting.Indented);
+        }
+
+        public void LoadDataFromJson(String json)
+        {
+            var loadedData = JsonConvert.DeserializeObject<MineGame>(json);
+
+            if (loadedData != null)
+            {
+                double iron = loadedData.Iron;
+                double gold = loadedData.Gold;
+                double diamond = loadedData.Diamond;
+
+                _instance.Iron = loadedData.Iron;
+                _instance.Gold = loadedData.Gold;
+                _instance.Diamond = loadedData.Diamond;
+                _instance.UsedPickaxe = loadedData.UsedPickaxe;
+
+                _instance.IronMine = loadedData.IronMine;
+                _instance.GoldMine = loadedData.GoldMine;
+                _instance.DiamondMine = loadedData.DiamondMine;
+                _instance.Equipment = loadedData.Equipment;
+                _instance.PickaxeShop = loadedData.PickaxeShop;
+            }
+
+
         }
 
         protected void OnPropertyChanged(string propertyName)

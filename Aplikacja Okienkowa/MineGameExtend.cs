@@ -32,7 +32,7 @@ namespace Aplikacja_Okienkowa
 
         public static bool CanBuyPickaxe(this MineGame mineGame, int idPickaxe)
         {
-            Pickaxe pickaxe = mineGame.PickaxeShop.PickaxeList.Keys.FirstOrDefault(x => x.Id == idPickaxe);
+            Pickaxe pickaxe = mineGame.PickaxeShop.PickaxeList.Values.FirstOrDefault(x => x.pickaxe.Id == idPickaxe).pickaxe;
 
             if (pickaxe == null)
             {
@@ -44,14 +44,14 @@ namespace Aplikacja_Okienkowa
                 return false;
             }
 
-            if (!mineGame.PickaxeShop.PickaxeList.TryGetValue(pickaxe, out Dictionary<ResourceType, double> cost))
+            if (!mineGame.PickaxeShop.PickaxeList.TryGetValue(pickaxe.Id, out (Pickaxe, Dictionary<ResourceType, double>) cost))
             {
                 return false;
             }
 
-            double ironCost = cost.GetValueOrDefault(ResourceType.Iron, 0);
-            double goldCost = cost.GetValueOrDefault(ResourceType.Gold, 0);
-            double diamondCost = cost.GetValueOrDefault(ResourceType.Diamond, 0);
+            double ironCost = cost.Item2.GetValueOrDefault(ResourceType.Iron, 0);
+            double goldCost = cost.Item2.GetValueOrDefault(ResourceType.Gold, 0);
+            double diamondCost = cost.Item2.GetValueOrDefault(ResourceType.Diamond, 0);
 
             if (mineGame.Iron < ironCost || mineGame.Gold < goldCost || mineGame.Diamond < diamondCost)
             {

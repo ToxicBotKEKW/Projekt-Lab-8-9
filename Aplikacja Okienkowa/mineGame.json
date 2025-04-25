@@ -1,0 +1,205 @@
+{
+  "Iron": 10.0,
+  "Gold": 0.0,
+  "Diamond": 0.0,
+  "UsedPickaxe": {
+    "Id": 1,
+    "Name": "Podstawowy kilof",
+    "ImageName": "pickaxe-0.png",
+    "Multiplier": {
+      "Iron": 0,
+      "Gold": 0,
+      "Diamond": 0
+    },
+    "RequirmentLevel": 1
+  },
+  "IronMine": {
+    "ResourceType": 0,
+    "Name": "Kopalnia Żelaza",
+    "Level": 1,
+    "PointForClick": {
+      "1": 1.0,
+      "2": 2.0,
+      "3": 3.5,
+      "4": 6.0
+    },
+    "PointsPerInterval": {
+      "1": 10.0,
+      "2": 25.0,
+      "3": 50.0,
+      "4": 80.0
+    },
+    "LevelRequirments": {
+      "2": {
+        "Iron": 100.0
+      },
+      "3": {
+        "Iron": 300.0
+      },
+      "4": {
+        "Iron": 700.0,
+        "Gold": 50.0
+      }
+    }
+  },
+  "GoldMine": {
+    "ResourceType": 1,
+    "Name": "Kopalnia Złota",
+    "Level": 1,
+    "PointForClick": {
+      "1": 0.1,
+      "2": 0.25,
+      "3": 0.5,
+      "4": 1.0
+    },
+    "PointsPerInterval": {
+      "1": 0.25,
+      "2": 0.6,
+      "3": 1.5,
+      "4": 2.5
+    },
+    "LevelRequirments": {
+      "2": {
+        "Gold": 100.0
+      },
+      "3": {
+        "Gold": 300.0
+      },
+      "4": {
+        "Gold": 700.0,
+        "Iron": 200.0
+      }
+    }
+  },
+  "DiamondMine": {
+    "ResourceType": 2,
+    "Name": "Kopalnia Diamentów",
+    "Level": 1,
+    "PointForClick": {
+      "1": 0.01,
+      "2": 0.03,
+      "3": 0.08,
+      "4": 0.13
+    },
+    "PointsPerInterval": {
+      "1": 0.05,
+      "2": 0.12,
+      "3": 0.3,
+      "4": 0.55
+    },
+    "LevelRequirments": {
+      "2": {
+        "Diamond": 100.0
+      },
+      "3": {
+        "Diamond": 250.0
+      },
+      "4": {
+        "Diamond": 600.0,
+        "Gold": 300.0
+      }
+    }
+  },
+  "Equipment": {
+    "PickaxeList": [
+      {
+        "Id": 1,
+        "Name": "Podstawowy kilof",
+        "ImageName": "pickaxe-0.png",
+        "Multiplier": {
+          "Iron": 0,
+          "Gold": 0,
+          "Diamond": 0
+        },
+        "RequirmentLevel": 1
+      },
+      {
+        "Id": 0,
+        "Name": "Kilof - admin",
+        "ImageName": "pickaxe-admin.png",
+        "Multiplier": {
+          "Iron": 1000,
+          "Gold": 1000,
+          "Diamond": 1000
+        },
+        "RequirmentLevel": 0
+      }
+    ]
+  },
+  "PickaxeShop": {
+    "PickaxeList": {
+      "2": {
+        "Item1": {
+          "Id": 2,
+          "Name": "Kilof - 1",
+          "ImageName": "pickaxe-1.png",
+          "Multiplier": {
+            "Iron": 2,
+            "Gold": 1,
+            "Diamond": 0
+          },
+          "RequirmentLevel": 2
+        },
+        "Item2": {
+          "Iron": 20.0,
+          "Gold": 1.0,
+          "Diamond": 0.5
+        }
+      },
+      "3": {
+        "Item1": {
+          "Id": 3,
+          "Name": "Kilof - 2",
+          "ImageName": "pickaxe-2.png",
+          "Multiplier": {
+            "Iron": 2,
+            "Gold": 1,
+            "Diamond": 0
+          },
+          "RequirmentLevel": 2
+        },
+        "Item2": {
+          "Iron": 40.0,
+          "Gold": 1.0,
+          "Diamond": 0.5
+        }
+      },
+      "4": {
+        "Item1": {
+          "Id": 4,
+          "Name": "Kilof - 3",
+          "ImageName": "pickaxe-3.png",
+          "Multiplier": {
+            "Iron": 2,
+            "Gold": 1,
+            "Diamond": 0
+          },
+          "RequirmentLevel": 2
+        },
+        "Item2": {
+          "Iron": 10.0,
+          "Gold": 3.0,
+          "Diamond": 0.5
+        }
+      },
+      "5": {
+        "Item1": {
+          "Id": 5,
+          "Name": "Kilof - 4",
+          "ImageName": "pickaxe-4.png",
+          "Multiplier": {
+            "Iron": 2,
+            "Gold": 1,
+            "Diamond": 0
+          },
+          "RequirmentLevel": 2
+        },
+        "Item2": {
+          "Iron": 50.0,
+          "Gold": 6.0,
+          "Diamond": 0.5
+        }
+      }
+    }
+  }
+}

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Projekt_Lab_8_9;
+using Newtonsoft.Json;
 
 namespace Aplikacja_Okienkowa
 {
@@ -29,10 +31,35 @@ namespace Aplikacja_Okienkowa
         public MainForm()
         {
             mineGame = MineGame.GetInstance();
+
+            string projectRoot1 = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
+            string primaryFilePath = Path.Combine(projectRoot1, "mineGame.json");
+            string projectRoot2 = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @""));
+            string backupFilePath = Path.Combine(projectRoot2, "defaultGame.json");
+
+            string jsonFromFile;
+
+            if (File.Exists(primaryFilePath))
+            {
+                jsonFromFile = File.ReadAllText(primaryFilePath);
+            }
+            else if (File.Exists(backupFilePath))
+            {
+                jsonFromFile = File.ReadAllText(backupFilePath);
+            }
+            else
+            {
+                throw new FileNotFoundException("Nie znaleziono ani pliku głównego, ani zapasowego.");
+            }
+
+            mineGame.LoadDataFromJson(jsonFromFile);
+
             InitComponent();
             LoadPanel(new IronMinePanel());
 
             InitializePeriodicTimer();
+
+            this.FormClosing += MainForm_FormClosing;
         }
 
         private void InitComponent()
@@ -223,7 +250,7 @@ namespace Aplikacja_Okienkowa
             periodicTimer.Start();
         }
 
-        private void PeriodicTimer_Tick(object sender, EventArgs e)
+        private async void PeriodicTimer_Tick(object sender, EventArgs e)
         {
             mineGame.PointsPerInterval(ResourceType.Iron);
             mineGame.PointsPerInterval(ResourceType.Gold);
@@ -235,6 +262,15 @@ namespace Aplikacja_Okienkowa
             panel.Dock = DockStyle.Fill;
             contentPanel.Controls.Clear();
             contentPanel.Controls.Add(panel);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
+            string filePath = Path.Combine(projectRoot, "mineGame.json");
+
+            string json = mineGame.SaveDataToJson();
+            File.WriteAllText(filePath, json);
         }
 
         private void btnIronMine_Click(object sender, EventArgs e)
