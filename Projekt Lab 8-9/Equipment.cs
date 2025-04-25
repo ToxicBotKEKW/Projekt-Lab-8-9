@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Projekt_Lab_8_9
+﻿namespace Projekt_Lab_8_9
 {
     public class Equipment
     {
@@ -18,7 +12,7 @@ namespace Projekt_Lab_8_9
 
         public static Equipment GetInstance()
         {
-            if(_instance == null)
+            if (_instance == null)
             {
                 _instance = new Equipment();
             }
@@ -26,7 +20,8 @@ namespace Projekt_Lab_8_9
             return _instance;
         }
 
-        public void AddPickaxe(Pickaxe pickaxe) {
+        public void AddPickaxe(Pickaxe pickaxe)
+        {
             if (PickaxeList.Any(x => x.Id == pickaxe.Id))
             {
                 throw new PickaxeAlreadyExistsException(pickaxe.Id);
@@ -35,7 +30,8 @@ namespace Projekt_Lab_8_9
             PickaxeList.Add(pickaxe);
         }
 
-        public Pickaxe EquipPickaxe(int id) {
+        public Pickaxe EquipPickaxe(int id)
+        {
             return PickaxeList.Find(x => x.Id == id);
         }
     }

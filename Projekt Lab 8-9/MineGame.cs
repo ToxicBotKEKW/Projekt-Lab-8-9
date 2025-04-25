@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using System.IO;
+﻿using Newtonsoft.Json;
 using System.ComponentModel;
-using static System.Net.Mime.MediaTypeNames;
-using Newtonsoft.Json;
 
 
 namespace Projekt_Lab_8_9
@@ -92,11 +83,11 @@ namespace Projekt_Lab_8_9
 
         public Dictionary<int, (Pickaxe, Dictionary<ResourceType, double>)> GetPickaxesYouCanBuy(String name)
         {
-            if(name == null)
+            if (name == null)
             {
-            return PickaxeShop.PickaxeList
-                .Where(x => !Equipment.PickaxeList.Contains(x.Value.Item1))
-                .ToDictionary(x => x.Key, x => x.Value);
+                return PickaxeShop.PickaxeList
+                    .Where(x => !Equipment.PickaxeList.Contains(x.Value.Item1))
+                    .ToDictionary(x => x.Key, x => x.Value);
             }
 
             return PickaxeShop.FindPickaxeByName(name)
@@ -146,7 +137,7 @@ namespace Projekt_Lab_8_9
         {
             Dictionary<ResourceType, double> cost = mine.RequirmentsForNextLevel();
 
-            if(cost == null)
+            if (cost == null)
             {
                 return;
             }
@@ -189,7 +180,7 @@ namespace Projekt_Lab_8_9
                     Diamond += value;
                 }
             }
-            catch(PickaxeLevelRequirementException e)
+            catch (PickaxeLevelRequirementException e)
             {
                 return $"{e.Message}";
             }
@@ -197,23 +188,24 @@ namespace Projekt_Lab_8_9
             return $"+ {value}";
         }
 
-        public String PointsPerInterval(ResourceType type) {
+        public String PointsPerInterval(ResourceType type)
+        {
             double value = 0;
-                if (type == ResourceType.Iron)
-                {
-                    value = IronMine.GetPointsPerInterval();
-                    Iron += value;
-                }
-                else if (type == ResourceType.Gold)
-                {
-                    value = GoldMine.GetPointsPerInterval();
-                    Gold += value;
-                }
-                else if (type == ResourceType.Diamond)
-                {
-                    value = DiamondMine.GetPointsPerInterval();
-                    Diamond += value;
-                }
+            if (type == ResourceType.Iron)
+            {
+                value = IronMine.GetPointsPerInterval();
+                Iron += value;
+            }
+            else if (type == ResourceType.Gold)
+            {
+                value = GoldMine.GetPointsPerInterval();
+                Gold += value;
+            }
+            else if (type == ResourceType.Diamond)
+            {
+                value = DiamondMine.GetPointsPerInterval();
+                Diamond += value;
+            }
 
             return $"+ {value}";
         }

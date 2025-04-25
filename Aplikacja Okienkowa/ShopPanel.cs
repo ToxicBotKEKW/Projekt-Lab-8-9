@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Projekt_Lab_8_9;
+﻿using Projekt_Lab_8_9;
 
 namespace Aplikacja_Okienkowa
 {
@@ -63,7 +58,7 @@ namespace Aplikacja_Okienkowa
                 Height = 25,
                 Text = "Wyszukaj",
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
-                BackColor = Color.FromArgb(25, 135, 84), 
+                BackColor = Color.FromArgb(25, 135, 84),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
                 Cursor = Cursors.Hand,
@@ -74,7 +69,8 @@ namespace Aplikacja_Okienkowa
             pickaxeShopSearchButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(20, 100, 60);
 
 
-            pickaxeShopSearchButton.Click += (s, v) => {
+            pickaxeShopSearchButton.Click += (s, v) =>
+            {
                 string name = pickaxeShopSearchTextBox.Text;
                 shopPanel.Controls.Remove(pickaxeShopListPanel);
                 pickaxeShopListPanel = InitPickaxeListPanel(name);

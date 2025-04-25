@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Projekt_Lab_8_9;
+﻿using Projekt_Lab_8_9;
 
 namespace Aplikacja_Okienkowa
 {
     public static class MineGameExtend
     {
-        public static bool CanUpgradeMine(this MineGame mineGame, Mine mine) {
+        public static bool CanUpgradeMine(this MineGame mineGame, Mine mine)
+        {
             Dictionary<ResourceType, double> cost = mine.RequirmentsForNextLevel();
 
             if (cost == null)

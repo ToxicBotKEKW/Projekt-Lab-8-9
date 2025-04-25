@@ -1,9 +1,4 @@
 ﻿using Projekt_Lab_8_9;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aplikacja_Okienkowa
 {
@@ -11,7 +6,8 @@ namespace Aplikacja_Okienkowa
     {
         private MineGame mineGame;
 
-        public IronMinePanel() {
+        public IronMinePanel()
+        {
             mineGame = MineGame.GetInstance();
             InitComponent();
         }

@@ -1,8 +1,4 @@
 ﻿using Projekt_Lab_8_9;
-using System;
-using System.Drawing;
-using System.IO.Packaging;
-using System.Windows.Forms;
 
 namespace Aplikacja_Okienkowa
 {
@@ -21,7 +17,7 @@ namespace Aplikacja_Okienkowa
             Panel eqPanel = new Panel
             {
                 Dock = DockStyle.Fill,
-                Padding = new Padding { Left = 100, Top = 50},
+                Padding = new Padding { Left = 100, Top = 50 },
                 AutoScroll = true
             };
 

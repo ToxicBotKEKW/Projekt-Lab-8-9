@@ -1,12 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Projekt_Lab_8_9;
-using Newtonsoft.Json;
+﻿using Projekt_Lab_8_9;
 
 namespace Aplikacja_Okienkowa
 {
@@ -101,7 +93,7 @@ namespace Aplikacja_Okienkowa
 
             goldMineButton.Click += btnGoldMine_Click;
 
-            diamondMineButton = new Button 
+            diamondMineButton = new Button
             {
                 Text = "",
                 Dock = DockStyle.Top,
@@ -145,7 +137,7 @@ namespace Aplikacja_Okienkowa
 
             ///////////////////////////////////////////
 
-          
+
 
             rightPanel = new Panel
             {
@@ -164,7 +156,7 @@ namespace Aplikacja_Okienkowa
                 Image = Image.FromFile("../../../Resources/diamond.png"),
                 Dock = DockStyle.Right,
                 Width = 20,
-                Height= 40
+                Height = 40
             };
 
             diamonodValueLabel = new Label
@@ -213,7 +205,7 @@ namespace Aplikacja_Okienkowa
                 ForeColor = Color.White,
                 Dock = DockStyle.Right,
                 AutoSize = true,
-                Padding = new Padding(0,13,0,0)
+                Padding = new Padding(0, 13, 0, 0)
             };
 
             ironValueLabel.DataBindings.Add("Text", mineGame, "Iron", true, DataSourceUpdateMode.OnPropertyChanged, null, "F1");

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Projekt_Lab_8_9
+﻿namespace Projekt_Lab_8_9
 {
     public abstract class Mine
     {
@@ -15,7 +7,7 @@ namespace Projekt_Lab_8_9
         public Dictionary<int, double> PointForClick { get; private set; }
         public Dictionary<int, double> PointsPerInterval { get; private set; }
         public abstract ResourceType ResourceType { get; }
-        public Dictionary<int, Dictionary<ResourceType,double>> LevelRequirments { get; private set; }
+        public Dictionary<int, Dictionary<ResourceType, double>> LevelRequirments { get; private set; }
 
         protected Mine(
             String name
